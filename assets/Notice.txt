@@ -1,0 +1,3 @@
+# this is a synthetic data with costumized features that allows us to enhance the performances of the recommendation system
+# we have made the data collection and cleaning so far
+# we will check again our data if any problem occurs by the end of this competition
