@@ -251,7 +251,7 @@ smart9adhya/
     │   └── Embedding.py       
     ├── explanation/                  # LLM
     │   └── Fetching.py
-    └── api/                   # Backend API (future)
+    └── chatbot_Ai_assistant/                   #(future)based on natural language
 ```
 
 ---
