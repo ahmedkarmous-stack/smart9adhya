@@ -232,8 +232,20 @@ smart9adhya/
 ├── README.md               # This file
 ├── docs/
 │   └── technical_report.pdf # Detailed documentation
-├── assets/
-│   └── 4 synthetic datasets/             # Product images
+├── qdrant_db/
+│   └── meta.json      #metadata
+│   └── Collections
+│      └──behaviors
+│      │   └──storage.sqlite
+│      └──products
+│      │   └──storage.sqlite       
+│      └──reviews   
+│      │   └──storage.sqlite
+│      └──users
+│          └──storage.sqlite
+├──assets           #4 synthetic datasets
+│                   # Product images
+│
 └── src/
     ├── rag and vision/              # RAG engine 
     │   └── Embedding.py       
