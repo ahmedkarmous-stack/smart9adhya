@@ -1,0 +1,1 @@
+## here you'll see the qdrant collections_and metadata.json 
