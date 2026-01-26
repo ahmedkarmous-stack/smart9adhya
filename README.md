@@ -236,8 +236,9 @@ smart9adhya/
 │   └── 4 synthetic datasets/             # Product images
 └── src/
     ├── rag and vision/              # RAG engine 
-    │   └──        
-    ├── explanation/             # LLM
+    │   └── Embedding.py       
+    ├── explanation/                  # LLM
+    │   └── Fetching.py
     └── api/                   # Backend API (future)
 ```
 
