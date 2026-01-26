@@ -247,9 +247,9 @@ smart9adhya/
 │                   # Product images
 │
 └── src/
-    ├── rag and vision/              # RAG engine 
+    ├── image_and_image_search/              # image_Matcher
     │   └── Embedding.py       
-    ├── explanation/                  # LLM
+    ├── rag+explanation/                  # RAG engine
     │   └── Fetching.py
     └── chatbot_Ai_assistant/                   #(future)based on natural language
 ```
@@ -261,7 +261,6 @@ smart9adhya/
 ### ✅ Completed (Phase 1-2)
 - [x] User authentication system
 - [x] Budget management (monthly/current)
-- [x] RAG-based semantic search
 - [x] Computer vision image analysis
 - [x] Intent detection
 - [x] XP rewards system
@@ -269,6 +268,7 @@ smart9adhya/
 - [x] User profile management
 
 ### 🔄 In Progress (Phase 3)
+- [ ] RAG-based semantic search
 - [ ] Astonishing web interface for better user experience
 - [ ] Linking all the workflow
 - [ ] Ai assistant chatbot based on natural language for technical problems
