@@ -247,7 +247,7 @@ smart9adhya/
 │                   # Product images
 │
 └── src/
-    ├── image_and_image_search/              # image_Matcher
+    ├── make_qdrant_collection/              # make_qdrant collections
     │   └── Embedding.py       
     ├── rag+explanation/                  # RAG engine
     │   └── Fetching.py
