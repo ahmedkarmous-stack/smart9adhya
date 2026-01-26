@@ -235,7 +235,8 @@ smart9adhya/
 ├── assets/
 │   └── 4 synthetic datasets/             # Product images
 └── src/
-    ├── rag and vision/                # RAG engine 
+    ├── rag and vision/              # RAG engine 
+    │   └──        
     ├── explanation/             # LLM
     └── api/                   # Backend API (future)
 ```
