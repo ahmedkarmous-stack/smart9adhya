@@ -150,6 +150,8 @@ Smart9adhya addresses these challenges through:
    # Option 2: Local server (recommended)
    python -m http.server 8000
    # Then visit http://localhost:8000
+   # option3: using python manage.py runserver
+   Notice: you should open the smart9adhya-django folder
    ```
 
 3. **Or use with Node.js**
@@ -253,7 +255,8 @@ smart9adhya/
     │   └── Embedding.py       
     ├── rag+explanation/                  # RAG engine
     │   └── Fetching.py
-    └── chatbot_Ai_assistant/                   #(future)based on natural language
+    └── chatbot_Ai_assistant/                   #based on natural language
+        └──chatbot_technical.py
 
 The smart9adhya-django folder architecture
 smart9adhya-django/
@@ -298,12 +301,10 @@ smart9adhya-django/
 - [x] XP rewards system
 - [x] Refund system with pending status
 - [x] User profile management
-
-### 🔄 In Progress (Phase 3)
-- [ ] RAG-based semantic search
-- [ ] Astonishing web interface for better user experience
-- [ ] Linking all the workflow
-- [ ] Ai assistant chatbot based on natural language for technical problems
+- [x] RAG-based semantic search
+- [x] Astonishing web interface for better user experience
+- [x] Linking all the workflow
+- [x] Ai assistant chatbot based on natural language for technical problems
 
 
 
