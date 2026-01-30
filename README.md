@@ -231,7 +231,7 @@ smart9adhya/
 │   └── technical_report.pdf # Detailed documentation
 ├── qdrant_db/
 │   └── meta.json      #metadata
-│   └── Collections
+│   └── Collections  #qdrant_collections
 │      └──behaviors
 │      │   └──storage.sqlite
 │      └──products
@@ -246,10 +246,7 @@ smart9adhya/
 ├──smart9adhya-django # the django environment for the website (with local database)
 │
 └── src/# Extrait du code des fonctionalités principales
-    ├── make_qdrant_collection/              # make_qdrant collections
-    │   └── Embedding.py       
-    ├── rag+explanation/                  # RAG engine
-    │   └── Fetching.py
+    ├── conculsion.ipynb              # the search recommendation
     └── chatbot_Ai_assistant/                   #based on natural language
         └──chatbot_technical.py
 '''
