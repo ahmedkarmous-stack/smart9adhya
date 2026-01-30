@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card p-4">
+                <div class="text-center mb-4">
+                    <span style="font-size: 3rem;">🔥</span>
+                    <h2 class="text-gradient mt-2">Create Account</h2>
+                    <p class="text-muted">Join Smart9adhya and shop smarter</p>
+                </div>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label class="form-label">First Name</label>
+                            <input type="text" name="first_name" class="form-control" placeholder="John" required>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" name="last_name" class="form-control" placeholder="Doe" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="your@email.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Monthly Budget ($)</label>
+                        <input type="number" name="monthly_budget" class="form-control" value="2000" min="100" required>
+                        <small class="text-muted">Set your spending limit</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password1" class="form-control" placeholder="••••••••" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" name="password2" class="form-control" placeholder="••••••••" required>
+                    </div>
+                    
+                    {% if form.errors %}
+                    <div class="alert alert-danger py-2">
+                        <small>
+                            {% for field in form %}{% for error in field.errors %}{{ error }}<br>{% endfor %}{% endfor %}
+                            {% for error in form.non_field_errors %}{{ error }}<br>{% endfor %}
+                        </small>
+                    </div>
+                    {% endif %}
+                    
+                    <button type="submit" class="btn btn-primary w-100 py-2">Create Account</button>
+                </form>
+                
+                <div class="text-center mt-4">
+                    <p class="text-muted mb-0">Already have an account? 
+                        <a href="{% url 'users:login' %}" class="text-primary">Sign In</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

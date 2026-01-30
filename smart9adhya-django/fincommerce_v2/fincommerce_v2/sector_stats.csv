@@ -1,0 +1,8 @@
+sector,product_count,min_price,max_price,avg_price,avg_rating
+Healthcare,260,12.37,348.47,108.5,4.39
+Electronics,265,99.51,3467.49,1010.22,4.42
+Sports,265,25.12,2987.77,470.56,4.41
+Food,265,8.02,88.54,36.46,4.43
+Wine,262,12.88,485.17,174.07,4.42
+Furniture,312,35.52,3993.96,1287.03,4.42
+Fashion,371,19.03,785.96,233.73,4.41

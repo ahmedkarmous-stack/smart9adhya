@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <img src="{{ product.image }}" alt="{{ product.name }}" class="img-fluid rounded" 
+                 style="width: 100%; max-height: 500px; object-fit: cover;"
+                 onerror="this.src='https://via.placeholder.com/500x500?text=Product'">
+        </div>
+        <div class="col-md-6">
+            <span class="product-brand" style="font-size: 14px;">{{ product.brand }}</span>
+            <h1 class="h2 mt-2 mb-3">{{ product.name }}</h1>
+            
+            <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <span>{{ product.rating|default:"4.0" }}</span>
+                    <small class="text-muted">({{ product.reviews|default:0 }} reviews)</small>
+                </div>
+                <span class="product-sector">{{ product.sector }}</span>
+            </div>
+            
+            <h2 class="text-success mb-4">${{ product.price }}</h2>
+            
+            {% if product.description %}
+            <p class="text-muted mb-4">{{ product.description }}</p>
+            {% endif %}
+            
+            {% if product.tags %}
+            <div class="mb-4">
+                {% for tag in product.tags %}
+                <span class="badge bg-secondary me-1">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            {% if user.is_authenticated %}
+            <form method="post" action="{% url 'products:add_to_cart' product.id %}" class="d-flex gap-2 mb-4">
+                {% csrf_token %}
+                <select name="quantity" class="form-select" style="width: 100px;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button type="submit" class="btn btn-primary flex-grow-1">
+                    <i class="bi bi-cart-plus me-2"></i>Add to Cart
+                </button>
+            </form>
+            
+            <form method="post" action="{% url 'products:toggle_wishlist' product.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-secondary">
+                    <i class="bi bi-heart{% if in_wishlist %}-fill{% endif %} me-2"></i>
+                    {% if in_wishlist %}Remove from Wishlist{% else %}Add to Wishlist{% endif %}
+                </button>
+            </form>
+            {% else %}
+            <a href="{% url 'users:login' %}?next={{ request.path }}" class="btn btn-primary btn-lg w-100">
+                Sign in to Purchase
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    
+    {% if related_products %}
+    <div class="mt-5">
+        <h3 class="mb-4">Related Products</h3>
+        <div class="row g-4">
+            {% for product in related_products %}
+            <div class="col-6 col-md-3">
+                {% include 'components/product_card.html' with product=product %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

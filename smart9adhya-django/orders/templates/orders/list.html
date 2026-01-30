@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}My Orders{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="h3 mb-4">My Orders</h1>
+    
+    {% if orders %}
+    {% for order in orders %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+                <div>
+                    <h6 class="mb-1">Order #{{ order.order_id }}</h6>
+                    <small class="text-muted">{{ order.created_at|date:"M d, Y - H:i" }}</small>
+                </div>
+                <div class="text-end">
+                    <span class="badge {% if order.status == 'delivered' %}bg-success{% elif order.status == 'cancelled' %}bg-danger{% else %}bg-warning{% endif %}">
+                        {{ order.get_status_display }}
+                    </span>
+                    <div class="text-success fw-bold mt-1">${{ order.total|floatformat:2 }}</div>
+                </div>
+            </div>
+            
+            <div class="d-flex gap-2 flex-wrap">
+                {% for item in order.items.all|slice:":3" %}
+                <img src="{{ item.product_image }}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px;"
+                     onerror="this.src='https://via.placeholder.com/50x50?text=Item'">
+                {% endfor %}
+                {% if order.items.count > 3 %}
+                <span class="d-flex align-items-center text-muted">+{{ order.items.count|add:"-3" }} more</span>
+                {% endif %}
+            </div>
+            
+            <div class="mt-3">
+                <a href="{% url 'orders:detail' order.order_id %}" class="btn btn-outline-primary btn-sm">View Details</a>
+                {% if order.status == 'delivered' and not order.refund %}
+                <a href="{% url 'orders:refund' order.order_id %}" class="btn btn-outline-secondary btn-sm">Request Refund</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="text-center py-5">
+        <i class="bi bi-box display-1 text-muted"></i>
+        <h4 class="mt-3">No orders yet</h4>
+        <p class="text-muted">Start shopping to see your orders here</p>
+        <a href="{% url 'products:shop' %}" class="btn btn-primary">Browse Products</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="h3 mb-4">My Profile</h1>
+    
+    <div class="row">
+        <div class="col-lg-4 mb-4">
+            <!-- Profile Card -->
+            <div class="card p-4 text-center">
+                <div class="user-avatar mx-auto mb-3" style="width: 80px; height: 80px; font-size: 28px;">
+                    {{ user.initials }}
+                </div>
+                <h4>{{ user.full_name }}</h4>
+                <p class="text-muted">{{ user.email }}</p>
+                
+                <hr>
+                
+                <div class="row text-center">
+                    <div class="col-6">
+                        <h5 class="text-success mb-0">${{ user.current_budget|floatformat:0 }}</h5>
+                        <small class="text-muted">Budget</small>
+                    </div>
+                    <div class="col-6">
+                        <h5 class="mb-0" style="color: var(--purple);">{{ user.xp_points }}</h5>
+                        <small class="text-muted">XP Points</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-8">
+            <!-- Profile Form -->
+            <div class="card p-4 mb-4">
+                <h5 class="mb-3">Personal Information</h5>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="profile">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">First Name</label>
+                            <input type="text" name="first_name" class="form-control" value="{{ user.first_name }}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" name="last_name" class="form-control" value="{{ user.last_name }}">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" value="{{ user.email }}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone</label>
+                        <input type="text" name="phone" class="form-control" value="{{ user.phone|default:'' }}">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+            
+            <!-- Budget Settings -->
+            <div class="card p-4">
+                <h5 class="mb-3">Budget Settings</h5>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="budget">
+                    <div class="mb-3">
+                        <label class="form-label">Monthly Budget ($)</label>
+                        <input type="number" name="monthly_budget" class="form-control" value="{{ user.monthly_budget|floatformat:0 }}" min="100">
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label class="form-label text-muted">Current Budget</label>
+                            <p class="h4 text-success">${{ user.current_budget|floatformat:2 }}</p>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label text-muted">Total Spent</label>
+                            <p class="h4">${{ user.total_spent|floatformat:2 }}</p>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Budget</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

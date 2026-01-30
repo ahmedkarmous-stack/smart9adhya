@@ -1,0 +1,39 @@
+# Django Core
+Django>=4.2,<5.0
+django-environ>=0.11.2
+django-cors-headers>=4.3.1
+django-crispy-forms>=2.1
+crispy-bootstrap5>=2024.2
+
+# Database
+psycopg2-binary>=2.9.9  # PostgreSQL (optional)
+
+# Authentication
+django-allauth>=0.60.0
+PyJWT>=2.8.0
+
+# REST API
+djangorestframework>=3.14.0
+djangorestframework-simplejwt>=5.3.1
+
+# Qdrant Vector Database
+qdrant-client>=1.7.0
+
+# Image Processing
+Pillow>=10.2.0
+
+# Data Processing
+numpy>=1.26.0
+pandas>=2.1.0
+
+# Utils
+python-dotenv>=1.0.0
+requests>=2.31.0
+uuid>=1.30
+
+# Production
+gunicorn>=21.2.0
+whitenoise>=6.6.0
+
+# Development
+django-debug-toolbar>=4.2.0

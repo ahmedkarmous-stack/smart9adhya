@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <h1>Shop Smart, <span class="text-gradient">Save Better</span></h1>
+        <p>Discover products that match your style and budget with AI-powered recommendations.</p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="{% url 'products:shop' %}" class="btn btn-primary btn-lg">Browse Products <i class="bi bi-arrow-right ms-2"></i></a>
+            <a href="{% url 'search:search' %}" class="btn btn-outline-light btn-lg"><i class="bi bi-search me-2"></i>AI Search</a>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card text-center p-4 h-100">
+                    <div style="font-size: 3rem;">⚡</div>
+                    <h5 class="mt-3">AI-Powered Search</h5>
+                    <p class="text-muted mb-0">Find products with our RAG-based recommendation engine</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center p-4 h-100">
+                    <div style="font-size: 3rem;">🛡️</div>
+                    <h5 class="mt-3">Budget Protection</h5>
+                    <p class="text-muted mb-0">Never exceed your spending limit with automatic filtering</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center p-4 h-100">
+                    <div style="font-size: 3rem;">🎯</div>
+                    <h5 class="mt-3">Earn Rewards</h5>
+                    <p class="text-muted mb-0">Get XP points on every purchase and use as discounts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories -->
+<section class="py-5">
+    <div class="container">
+        <div class="section-header">
+            <h2>Shop by Category</h2>
+            <a href="{% url 'products:shop' %}" class="see-all">See All <i class="bi bi-arrow-right"></i></a>
+        </div>
+        <div class="row g-3">
+            {% for sector in sectors %}
+            <div class="col-6 col-md-3 col-lg">
+                <a href="{% url 'products:shop_sector' sector.name %}" class="sector-card">
+                    <span class="sector-icon">
+                        {% if sector.name == 'Fashion' %}👗{% elif sector.name == 'Electronics' %}📱{% elif sector.name == 'Furniture' %}🛋️{% elif sector.name == 'Food' %}🍕{% elif sector.name == 'Healthcare' %}💊{% elif sector.name == 'Sports' %}⚽{% elif sector.name == 'Wine' %}🍷{% else %}📦{% endif %}
+                    </span>
+                    <span class="sector-name">{{ sector.name }}</span>
+                    <small class="text-muted d-block">{{ sector.count }} products</small>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="py-5">
+    <div class="container">
+        <div class="section-header">
+            <h2>⭐ Featured Products</h2>
+            <a href="{% url 'products:shop' %}" class="see-all">See All <i class="bi bi-arrow-right"></i></a>
+        </div>
+        <div class="row g-4">
+            {% for product in featured_products %}
+            <div class="col-6 col-md-4 col-lg-3">
+                {% include 'components/product_card.html' with product=product %}
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <p class="text-muted">No featured products yet. <a href="{% url 'products:shop' %}">Browse all products</a></p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Trending Products -->
+<section class="py-5">
+    <div class="container">
+        <div class="section-header">
+            <h2>🔥 Trending Now</h2>
+            <a href="{% url 'products:shop' %}" class="see-all">See All <i class="bi bi-arrow-right"></i></a>
+        </div>
+        <div class="row g-4">
+            {% for product in trending_products %}
+            <div class="col-6 col-md-4 col-lg-3">
+                {% include 'components/product_card.html' with product=product %}
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <p class="text-muted">No trending products yet.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-5">
+    <div class="container">
+        <div class="card p-5 text-center" style="background: var(--gradient);">
+            <h2 class="text-white mb-3">Ready to Shop Smarter?</h2>
+            <p class="text-white opacity-75 mb-4">Create an account for personalized recommendations</p>
+            <div><a href="{% url 'users:register' %}" class="btn btn-light btn-lg px-5">Get Started Free</a></div>
+        </div>
+    </div>
+</section>
+{% endblock %}
