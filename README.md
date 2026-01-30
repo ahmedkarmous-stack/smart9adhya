@@ -118,7 +118,7 @@ Smart9adhya addresses these challenges through:
 
 | Layer | Technology | Purpose |
 |-------|------------|---------|
-| **Frontend** | Vanilla JavaScript + HTML5 | UI and interactions |
+| **Frontend** | Vanilla JavaScript + HTML5 +django(python) | UI and interactions |
 | **Vision** | PIL | Image processing |
 | **Styling** | CSS3 + CSS Variables | Dark theme, responsive |
 | **Vector DB** | Qdrant | Product embeddings |
@@ -152,11 +152,6 @@ Smart9adhya addresses these challenges through:
    # Then visit http://localhost:8000
    # option3: using python manage.py runserver
    Notice: you should open the smart9adhya-django folder
-   ```
-
-3. **Or use with Node.js**
-   ```bash
-   npx serve .
    ```
 
 ---
@@ -225,7 +220,7 @@ Enter keywords in the search bar:
 
 ---
 
-## 📁 Project Structure
+## 📁 The Repository Structure
 
 ```
 smart9adhya/
@@ -257,8 +252,10 @@ smart9adhya/
     │   └── Fetching.py
     └── chatbot_Ai_assistant/                   #based on natural language
         └──chatbot_technical.py
+'''
+## 📁 Project Structure
 
-The smart9adhya-django folder architecture
+The smart9adhya-django folder architecture 
 smart9adhya-django/
 ├── smart9adhya/              # Main project config
 │   ├── settings.py           # Django settings
