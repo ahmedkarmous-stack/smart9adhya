@@ -314,6 +314,7 @@ smart9adhya-django/
 ## 🙏 Acknowledgments
 
 - [Qdrant](https://qdrant.tech/) for vector database technology
+- detailed explanation of Qdrant use in the "src" directory
 - RAG concepts inspired by modern LLM research
 
 ---
