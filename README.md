@@ -246,12 +246,44 @@ smart9adhya/
 ├──assets           #4 synthetic datasets
 │                   # Product images
 │
-└── src/
+├──smart9adhya-django # the django environment for the website (with local database)
+│
+└── src/# Extrait du code des fonctionalités principales
     ├── make_qdrant_collection/              # make_qdrant collections
     │   └── Embedding.py       
     ├── rag+explanation/                  # RAG engine
     │   └── Fetching.py
     └── chatbot_Ai_assistant/                   #(future)based on natural language
+
+The smart9adhya-django folder architecture
+smart9adhya-django/
+├── smart9adhya/              # Main project config
+│   ├── settings.py           # Django settings
+│   ├── urls.py               # URL routing
+│   ├── templates/base.html   # Base template
+│   └── static/               # CSS, JS files
+├── users/                    # User authentication & profiles
+│   ├── models.py             # User, PaymentCard, Address
+│   ├── views.py              # Login, Register, Profile
+│   └── forms.py              # User forms
+├── products/                 # Product catalog
+│   ├── models.py             # Product, Cart, Wishlist
+│   ├── views.py              # Home, Shop, Detail, Cart
+│   └── templates/            # Product templates
+├── orders/                   # Order management
+│   ├── models.py             # Order, OrderItem, Refund
+│   └── views.py              # Checkout, Order history
+├── search/                   # RAG Search engine
+│   ├── qdrant_service.py     # Qdrant integration
+│   └── views.py              # Search views
+├── api/                      # REST API
+│   ├── views.py              # API endpoints
+│   └── serializers.py        # DRF serializers
+├── scripts/
+│   └── seed_products.py      # Database seeder
+├── requirements.txt
+└── manage.py
+```
 ```
 
 ---
